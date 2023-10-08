@@ -48,6 +48,34 @@ let currentItem = 0;
 // Load Initial Items
 
 window.addEventListener("DOMContentLoaded",function(){
+    showPerson();
+})
+
+// show person base on item 
+
+function showPerson(){
     const item = reviews[currentItem];
     img.src = item.img;
+    author.textContent = item.name;
+    job.textContent = item.job;
+    info.textContent = item.text;
+}
+
+// show next person
+
+nextBtn.addEventListener("click", function(){
+    currentItem++;
+    if(currentItem > reviews.length - 1){
+        currentItem = 0;
+    }
+    showPerson(currentItem);
+
+})
+prevBtn.addEventListener("click", function(){
+    currentItem--;
+    if(currentItem < 0){
+        currentItem = reviews.length - 1;
+    }
+    showPerson(currentItem);
+
 })
